@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-gray-600;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  /* Минималистичные стили в духе ChatGPT */
+  .chatgpt-card {
+    @apply bg-white border border-gray-200 rounded-lg p-6 transition-colors;
+  }
+  
+  .chatgpt-card:hover {
+    @apply bg-gray-50 border-gray-300;
+  }
+  
+  .chatgpt-input {
+    @apply w-full px-4 py-2 border border-gray-200 rounded-lg 
+           focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent
+           text-gray-900 placeholder-gray-400;
+  }
+  
+  .chatgpt-button-primary {
+    @apply px-4 py-2 bg-black text-white rounded-lg 
+           hover:bg-gray-900 transition-colors font-medium;
+  }
+  
+  .chatgpt-button-secondary {
+    @apply px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-lg 
+           hover:bg-gray-50 transition-colors font-medium;
+  }
+}
+
