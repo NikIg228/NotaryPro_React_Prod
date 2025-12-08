@@ -12,10 +12,18 @@ export default defineConfig({
     hmr: {
       protocol: 'ws',
     },
+    middlewareMode: false,
   },
   optimizeDeps: {
     // Исключаем documents.json из предварительной оптимизации
     exclude: ['../data/documents.json'],
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
   },
 })
 
