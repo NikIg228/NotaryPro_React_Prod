@@ -1,8 +1,26 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import DocumentPage from './pages/DocumentPage'
 import WizardPage from './pages/WizardPage'
+import LandingPage from './pages/LandingPage'
 import Header from './components/Header'
+
+function AppContent() {
+  const location = useLocation()
+  const showHeader = location.pathname !== '/landing'
+
+  return (
+    <>
+      {showHeader && <Header />}
+      <Routes>
+        <Route path="/landing" element={<LandingPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/document/:id" element={<DocumentPage />} />
+        <Route path="/document/:id/wizard" element={<WizardPage />} />
+      </Routes>
+    </>
+  )
+}
 
 function App() {
   return (
@@ -12,17 +30,9 @@ function App() {
         v7_startTransition: true,
       }}
     >
-      <div className="min-h-screen bg-white">
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/document/:id" element={<DocumentPage />} />
-          <Route path="/document/:id/wizard" element={<WizardPage />} />
-        </Routes>
-      </div>
+      <AppContent />
     </Router>
   )
 }
 
 export default App
-
