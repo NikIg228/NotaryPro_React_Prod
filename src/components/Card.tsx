@@ -13,8 +13,8 @@ const Card: React.FC<CardProps> = ({
   onClick,
   hover = true
 }) => {
-  const baseStyles = 'bg-white border border-gray-200 rounded-lg p-6 transition-colors'
-  const hoverStyles = hover ? 'hover:bg-gray-50 hover:border-gray-300 cursor-pointer' : ''
+  const baseStyles = 'bg-white border border-gray-200 rounded-lg p-6 transition-all duration-200'
+  const hoverStyles = hover ? 'hover:bg-purple-50 hover:border-purple-300 hover:shadow-md cursor-pointer' : ''
   
   return (
     <div

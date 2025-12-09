@@ -79,7 +79,7 @@ const CategoryPage: React.FC = () => {
             {filteredDocuments.map((doc) => (
               <div
                 key={doc.id}
-                className="flex items-center justify-between bg-white border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors"
+                className="flex items-center justify-between bg-white border border-gray-200 rounded-lg p-4 hover:bg-purple-50 hover:border-purple-300 hover:shadow-md transition-all duration-200 cursor-pointer"
               >
                 <h3 className="text-lg font-semibold text-gray-900 flex-1">
                   {doc.title}
