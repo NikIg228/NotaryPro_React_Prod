@@ -172,9 +172,6 @@ const DynamicWizard: React.FC<DynamicWizardProps> = ({ schema, onSubmit, onCance
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
               {schema.title}
             </h1>
-            <p className="text-sm text-gray-500">
-              {schema.code}
-            </p>
           </div>
 
           {/* Отображение ошибок */}

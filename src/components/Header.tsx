@@ -14,7 +14,12 @@ const Header: React.FC = () => {
             />
           </Link>
           <nav className="flex items-center gap-4">
-            {/* Можно добавить навигацию при необходимости */}
+            <Link 
+              to="/landing" 
+              className="text-gray-700 hover:text-purple-600 transition-colors"
+            >
+              Landing
+            </Link>
           </nav>
         </div>
       </div>

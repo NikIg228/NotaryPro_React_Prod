@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from '../components/Button'
 import Input from '../components/Input'
@@ -17,6 +17,9 @@ const LandingPage: React.FC = () => {
   })
   const [videoError, setVideoError] = useState<string | null>(null)
   const [videoAspectRatio, setVideoAspectRatio] = useState<number | null>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const videoContainerRef = useRef<HTMLDivElement>(null)
+  const userPausedRef = useRef<boolean>(false) // Отслеживаем, остановил ли пользователь видео вручную
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -29,6 +32,63 @@ const LandingPage: React.FC = () => {
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }))
   }
+
+  // Автоматическое воспроизведение видео при достижении половины контейнера
+  useEffect(() => {
+    const video = videoRef.current
+    const container = videoContainerRef.current
+
+    if (!video || !container) return
+
+    // Обработчик ручной остановки видео пользователем
+    const handlePause = () => {
+      userPausedRef.current = true
+    }
+
+    // Обработчик ручного запуска видео пользователем
+    const handlePlay = () => {
+      userPausedRef.current = false
+    }
+
+    video.addEventListener('pause', handlePause)
+    video.addEventListener('play', handlePlay)
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Проверяем, видно ли видео на 50% или больше
+          if (entry.intersectionRatio >= 0.5) {
+            // Запускаем воспроизведение только если пользователь не остановил видео вручную
+            if (video.paused && !userPausedRef.current) {
+              video.play().catch((error) => {
+                // Игнорируем ошибки автозапуска (браузер может блокировать)
+                console.log('Автозапуск видео заблокирован браузером:', error)
+              })
+            }
+          } else {
+            // Останавливаем воспроизведение, если видео ушло из видимости
+            // Но только если это не было сделано пользователем вручную
+            if (!video.paused && !userPausedRef.current) {
+              video.pause()
+            }
+          }
+        })
+      },
+      {
+        threshold: [0, 0.25, 0.5, 0.75, 1], // Отслеживаем несколько порогов видимости
+        rootMargin: '0px'
+      }
+    )
+
+    observer.observe(container)
+
+    // Очистка при размонтировании
+    return () => {
+      observer.disconnect()
+      video.removeEventListener('pause', handlePause)
+      video.removeEventListener('play', handlePlay)
+    }
+  }, [])
 
   return (
     <div className="min-h-screen bg-white">
@@ -49,6 +109,7 @@ const LandingPage: React.FC = () => {
           </Button>
           <div className="mt-12 bg-gray-100 rounded-lg p-8">
             <div 
+              ref={videoContainerRef}
               className="bg-gray-200 rounded overflow-hidden relative mx-auto"
               style={{
                 aspectRatio: videoAspectRatio ? `${videoAspectRatio}` : '16/9',
@@ -57,6 +118,7 @@ const LandingPage: React.FC = () => {
               }}
             >
               <video 
+                ref={videoRef}
                 className="w-full h-full object-contain" 
                 controls 
                 preload="metadata"

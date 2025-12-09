@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { Suspense, lazy } from 'react'
 import Header from './components/Header'
+import ScrollToTop from './components/ScrollToTop'
 
 // Lazy load pages for code splitting
 const HomePage = lazy(() => import('./pages/HomePage'))
@@ -15,6 +16,7 @@ function AppContent() {
 
   return (
     <>
+      <ScrollToTop />
       {showHeader && <Header />}
       <Suspense fallback={<div className="min-h-screen bg-white flex items-center justify-center">Загрузка...</div>}>
         <Routes>
