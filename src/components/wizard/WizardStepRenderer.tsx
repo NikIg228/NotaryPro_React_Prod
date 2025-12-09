@@ -1,5 +1,5 @@
 import React from 'react'
-import { useFormContext, Controller } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
 import { StepDefinition, WizardFormData } from '../../types/WizardTypes'
 import Card from '../Card'
 import RadioGroup from './RadioGroup'
@@ -8,7 +8,6 @@ import WizardArray from './WizardArray'
 import FormFieldRenderer from './FormFieldRenderer'
 import NumberInput from './NumberInput'
 import InputModeSelector from './InputModeSelector'
-import Input from '../Input'
 import OcrUploadBlock from './OcrUploadBlock'
 
 interface WizardStepRendererProps {
@@ -21,7 +20,7 @@ const WizardStepRenderer: React.FC<WizardStepRendererProps> = ({
   step, 
   onDataChange 
 }) => {
-  const { watch, control } = useFormContext()
+  const { watch } = useFormContext()
   const watchedValues = watch()
 
   const renderStepContent = () => {
@@ -58,56 +57,6 @@ const WizardStepRenderer: React.FC<WizardStepRendererProps> = ({
                 onDataChange({ [step.id]: value })
               }}
             />
-
-            {/* Специальный случай: выбор срока (дни / месяцы) с полем ввода под выбранным форматом */}
-            {step.id === 'term' && (
-              <div className="mt-2">
-                {selectedValue === 'days' && (
-                  <Controller
-                    name="term.days"
-                    control={control}
-                    render={({ field }) => (
-                      <Input
-                        {...field}
-                        type="number"
-                        label="Количество дней"
-                        min={1}
-                        max={31}
-                        onChange={(e) => {
-                          let v = parseInt(e.target.value || '0', 10)
-                          if (Number.isNaN(v)) v = 1
-                          if (v < 1) v = 1
-                          if (v > 31) v = 31
-                          field.onChange(v)
-                        }}
-                      />
-                    )}
-                  />
-                )}
-                {selectedValue === 'months' && (
-                  <Controller
-                    name="term.months"
-                    control={control}
-                    render={({ field }) => (
-                      <Input
-                        {...field}
-                        type="number"
-                        label="Количество месяцев"
-                        min={1}
-                        max={36}
-                        onChange={(e) => {
-                          let v = parseInt(e.target.value || '0', 10)
-                          if (Number.isNaN(v)) v = 1
-                          if (v < 1) v = 1
-                          if (v > 36) v = 36
-                          field.onChange(v)
-                        }}
-                      />
-                    )}
-                  />
-                )}
-              </div>
-            )}
           </div>
         )
       }
@@ -154,7 +103,7 @@ const WizardStepRenderer: React.FC<WizardStepRendererProps> = ({
             {/* Селектор способа ввода (ручной/OCR) - показывается всегда первым */}
             {!inputMode && (
               <InputModeSelector
-                selectedMode="manual"
+                selectedMode={watchedValues[inputModeTypeField] || 'manual'}
                 onModeChange={(mode) => {
                   onDataChange({ 
                     [inputModeTypeField]: mode,
@@ -225,10 +174,98 @@ const WizardStepRenderer: React.FC<WizardStepRendererProps> = ({
 
       case 'validation':
         return (
-          <div className="text-center py-8">
-            <p className="text-gray-600">
-              Проверка данных...
-            </p>
+          <div className="space-y-6">
+            <div className="text-center py-4">
+              <p className="text-gray-600 mb-6">
+                Проверка данных...
+              </p>
+            </div>
+            
+            {/* Превью документа Word */}
+            <div className="border-2 border-gray-300 rounded-lg bg-white shadow-lg overflow-hidden">
+              {/* Заголовок Word документа */}
+              <div className="bg-blue-600 text-white px-4 py-2 flex items-center gap-2">
+                <svg 
+                  className="w-5 h-5" 
+                  fill="currentColor" 
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" />
+                </svg>
+                <span className="font-semibold">Превью документа</span>
+                <span className="ml-auto text-sm opacity-75">Microsoft Word</span>
+              </div>
+              
+              {/* Содержимое документа (заглушка) */}
+              <div className="p-8 bg-white min-h-[400px]">
+                <div className="max-w-3xl mx-auto space-y-4">
+                  {/* Имитация текста документа */}
+                  <div className="text-center mb-8">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                      ДОКУМЕНТ
+                    </h3>
+                    <div className="w-24 h-1 bg-gray-300 mx-auto"></div>
+                  </div>
+                  
+                  <div className="space-y-4 text-gray-700">
+                    <p className="text-justify">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                      Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                    </p>
+                    <p className="text-justify">
+                      Duis aute irure dolor in reprehenderit in voluptate velit esse 
+                      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat 
+                      cupidatat non proident, sunt in culpa qui officia deserunt mollit 
+                      anim id est laborum.
+                    </p>
+                    
+                    {/* Имитация таблицы или структурированных данных */}
+                    <div className="border border-gray-300 rounded p-4 mt-6">
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <p className="font-semibold text-gray-900 mb-1">Поле 1:</p>
+                          <p className="text-gray-600">Значение 1</p>
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900 mb-1">Поле 2:</p>
+                          <p className="text-gray-600">Значение 2</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <p className="text-justify mt-6">
+                      Sed ut perspiciatis unde omnis iste natus error sit voluptatem 
+                      accusantium doloremque laudantium, totam rem aperiam.
+                    </p>
+                  </div>
+                  
+                  {/* Подпись */}
+                  <div className="mt-12 pt-8 border-t border-gray-300">
+                    <div className="flex justify-between">
+                      <div>
+                        <p className="text-gray-600 mb-2">Подпись:</p>
+                        <div className="w-48 h-12 border border-gray-300 rounded"></div>
+                      </div>
+                      <div>
+                        <p className="text-gray-600 mb-2">Дата:</p>
+                        <div className="w-32 h-12 border border-gray-300 rounded"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Футер документа */}
+              <div className="bg-gray-100 px-4 py-2 border-t border-gray-300 flex items-center justify-between text-sm text-gray-600">
+                <span>Страница 1 из 1</span>
+                <span>100%</span>
+              </div>
+            </div>
+            
+            <div className="text-center text-sm text-gray-500 mt-4">
+              Это превью документа. Финальный документ будет сгенерирован после подтверждения.
+            </div>
           </div>
         )
 

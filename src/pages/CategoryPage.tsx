@@ -1,25 +1,27 @@
 import React, { useState, useMemo } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import DocumentCard from '../components/DocumentCard'
 import Search from '../components/Search'
-import Filters from '../components/Filters'
-import { getDocumentsByCategory, searchDocuments } from '../utils/dataUtils'
+import Button from '../components/Button'
+import { getDocumentsByMainCategory, searchDocuments } from '../utils/dataUtils'
 
 const CategoryPage: React.FC = () => {
   const navigate = useNavigate()
   const location = useLocation()
-  const categoryPath = location.state?.categoryPath || ''
+  const mainCategory = location.state?.mainCategory || ''
   
   const [searchQuery, setSearchQuery] = useState('')
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([])
 
   // Получаем все документы категории
   const allDocuments = useMemo(() => {
-    if (!categoryPath) return []
-    return getDocumentsByCategory(categoryPath)
-  }, [categoryPath])
+    if (!mainCategory) {
+      // Если категория не передана, перенаправляем на главную
+      navigate('/')
+      return []
+    }
+    return getDocumentsByMainCategory(mainCategory)
+  }, [mainCategory, navigate])
 
-  // Фильтруем документы
+  // Фильтруем и сортируем документы по алфавиту
   const filteredDocuments = useMemo(() => {
     let docs = allDocuments
 
@@ -30,28 +32,13 @@ const CategoryPage: React.FC = () => {
       )
     }
 
-    // Фильтры (можно добавить логику фильтрации по типам документов)
-    if (selectedFilters.length > 0) {
-      // Пока фильтры не реализованы, возвращаем все документы
-    }
+    // Сортировка по алфавиту по названию
+    return docs.sort((a, b) => a.title.localeCompare(b.title, 'ru'))
+  }, [allDocuments, searchQuery])
 
-    return docs
-  }, [allDocuments, searchQuery, selectedFilters])
-
-  // Получаем уникальные подкатегории для фильтров
-  const filterOptions = useMemo(() => {
-    const subcategories = new Set<string>()
-    allDocuments.forEach(doc => {
-      const parts = doc.category.split(' / ')
-      if (parts.length > 2) {
-        subcategories.add(parts[2])
-      }
-    })
-    return Array.from(subcategories).map(sub => ({
-      value: sub,
-      label: sub
-    }))
-  }, [allDocuments])
+  const handleCreateClick = (docId: number) => {
+    navigate(`/document/${docId}/wizard`)
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -65,28 +52,20 @@ const CategoryPage: React.FC = () => {
 
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            {categoryPath || 'Категория документов'}
+            {mainCategory || 'Категория документов'}
           </h1>
           <p className="text-gray-600">
             {filteredDocuments.length} {filteredDocuments.length === 1 ? 'документ найден' : 'документов найдено'}
           </p>
         </div>
 
-        <div className="mb-8 space-y-6">
+        <div className="mb-8">
           <Search
             value={searchQuery}
             onChange={setSearchQuery}
             placeholder="Поиск документов..."
             className="max-w-md"
           />
-          
-          {filterOptions.length > 0 && (
-            <Filters
-              options={filterOptions}
-              selected={selectedFilters}
-              onChange={setSelectedFilters}
-            />
-          )}
         </div>
 
         {filteredDocuments.length === 0 ? (
@@ -96,15 +75,22 @@ const CategoryPage: React.FC = () => {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="space-y-4">
             {filteredDocuments.map((doc) => (
-              <DocumentCard
+              <div
                 key={doc.id}
-                id={doc.id}
-                code={doc.code}
-                title={doc.title}
-                category={doc.category}
-              />
+                className="flex items-center justify-between bg-white border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors"
+              >
+                <h3 className="text-lg font-semibold text-gray-900 flex-1">
+                  {doc.title}
+                </h3>
+                <Button
+                  onClick={() => handleCreateClick(doc.id)}
+                  className="ml-4"
+                >
+                  Создать
+                </Button>
+              </div>
             ))}
           </div>
         )}

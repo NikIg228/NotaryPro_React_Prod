@@ -354,9 +354,12 @@
         },
         {
           "id": "dov1",
-          "type": "form",
+          "type": "input-mode",
           "title": "Доверитель 1",
-          "fields": [
+          "input_mode_field": "dov1_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "dov[0].full_name",
               "type": "text",
@@ -401,25 +404,18 @@
               "name": "dov[0].phone",
               "type": "text",
               "label": "Телефон (опц.)"
-            },
-            {
-              "name": "dov[0].attachments[]",
-              "type": "file",
-              "label": "Загрузить 2 скана документа",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "pover_choice"
         },
         {
           "id": "dov_multi",
-          "type": "array",
+          "type": "input-mode",
           "title": "Доверители",
+          "input_mode_field": "dov_multi_mode",
           "min": 2,
           "max": 2,
-          "item_label": "Доверитель",
-          "fields": [
+          "manual_fields": [
             {
               "name": "dov[].full_name",
               "type": "text",
@@ -464,13 +460,6 @@
               "name": "dov[].phone",
               "type": "text",
               "label": "Телефон (опц.)"
-            },
-            {
-              "name": "dov[].attachments[]",
-              "type": "file",
-              "label": "Загрузить 2 скана документа",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "pover_choice"
@@ -496,9 +485,12 @@
         },
         {
           "id": "pover1",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 1",
-          "fields": [
+          "input_mode_field": "pover1_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "pover[0].full_name",
               "type": "text",
@@ -548,24 +540,18 @@
               "name": "pover[0].phone",
               "type": "text",
               "label": "Телефон (опц.)"
-            },
-            {
-              "name": "pover[0].attachments[]",
-              "type": "file",
-              "label": "Загрузить 2 скана документа",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "child_count"
         },
         {
           "id": "pover_multi",
-          "type": "array",
+          "type": "input-mode",
+          "title": "Поверенные",
+          "input_mode_field": "pover_multi_mode",
           "min": 2,
           "max": 2,
-          "item_label": "Поверенный",
-          "fields": [
+          "manual_fields": [
             {
               "name": "pover[].full_name",
               "type": "text",
@@ -615,13 +601,6 @@
               "name": "pover[].phone",
               "type": "text",
               "label": "Телефон (опц.)"
-            },
-            {
-              "name": "pover[].attachments[]",
-              "type": "file",
-              "label": "Загрузить 2 скана документа",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "child_count"
@@ -815,9 +794,12 @@
       "steps": [
         {
           "id": "principal",
-          "type": "form",
+          "type": "input-mode",
           "title": "Доверитель",
-          "fields": [
+          "input_mode_field": "principal_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "principal.full_name",
               "type": "text",
@@ -862,13 +844,6 @@
               "name": "principal.phone",
               "type": "text",
               "label": "Телефон (опц.)"
-            },
-            {
-              "name": "principal.attachments[]",
-              "type": "file",
-              "label": "Загрузить 2 скана документа доверителя",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "agent_choice"
@@ -894,9 +869,12 @@
         },
         {
           "id": "agent1",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 1",
-          "fields": [
+          "input_mode_field": "agent1_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agents[0].full_name",
               "type": "text",
@@ -936,25 +914,18 @@
               "name": "agents[0].phone",
               "type": "text",
               "label": "Телефон (опц.)"
-            },
-            {
-              "name": "agents[0].attachments[]",
-              "type": "file",
-              "label": "Загрузить 2 скана документа поверенного",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "where_block"
         },
         {
           "id": "agent_multi",
-          "type": "array",
+          "type": "input-mode",
           "title": "Поверенные",
+          "input_mode_field": "agent_multi_mode",
           "min": 2,
           "max": 2,
-          "item_label": "Поверенный",
-          "fields": [
+          "manual_fields": [
             {
               "name": "agents[].full_name",
               "type": "text",
@@ -994,13 +965,6 @@
               "name": "agents[].phone",
               "type": "text",
               "label": "Телефон (опц.)"
-            },
-            {
-              "name": "agents[].attachments[]",
-              "type": "file",
-              "label": "Загрузить 2 скана документа поверенного",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "where_block"
@@ -1177,9 +1141,12 @@
       "steps": [
         {
           "id": "principal",
-          "type": "form",
+          "type": "input-mode",
           "title": "Доверитель",
-          "fields": [
+          "input_mode_field": "principal_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "principal.full_name",
               "type": "text",
@@ -1219,13 +1186,6 @@
               "name": "principal.contact",
               "type": "text",
               "label": "Контакт"
-            },
-            {
-              "name": "principal.attachments[]",
-              "type": "file",
-              "label": "2 скана документа доверителя",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "agent_choice"
@@ -1251,9 +1211,12 @@
         },
         {
           "id": "agent1",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 1",
-          "fields": [
+          "input_mode_field": "agent1_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agents[0].full_name",
               "type": "text",
@@ -1293,25 +1256,18 @@
               "name": "agents[0].phone",
               "type": "text",
               "label": "Телефон (опц.)"
-            },
-            {
-              "name": "agents[0].attachments[]",
-              "type": "file",
-              "label": "2 скана документа поверенного",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "vehicle"
         },
         {
           "id": "agents_multi",
-          "type": "array",
-          "title": "Два поверенных",
-          "item_label": "Поверенный",
+          "type": "input-mode",
+          "title": "Поверенные",
+          "input_mode_field": "agents_multi_mode",
           "min": 2,
           "max": 2,
-          "fields": [
+          "manual_fields": [
             {
               "name": "agents[].full_name",
               "type": "text",
@@ -1351,13 +1307,6 @@
               "name": "agents[].phone",
               "type": "text",
               "label": "Телефон (опц.)"
-            },
-            {
-              "name": "agents[].attachments[]",
-              "type": "file",
-              "label": "2 скана документа поверенного",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "vehicle"
@@ -1582,9 +1531,12 @@
       "steps": [
         {
           "id": "principal",
-          "type": "form",
+          "type": "input-mode",
           "title": "Доверитель",
-          "fields": [
+          "input_mode_field": "principal_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "principal.full_name",
               "type": "text",
@@ -1629,13 +1581,6 @@
               "name": "principal.phone",
               "type": "text",
               "label": "Телефон (опц.)"
-            },
-            {
-              "name": "principal.attachments[]",
-              "type": "file",
-              "label": "2 скана документа доверителя",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "agent_choice"
@@ -1661,9 +1606,12 @@
         },
         {
           "id": "agent1",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 1",
-          "fields": [
+          "input_mode_field": "agent1_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agents[0].full_name",
               "type": "text",
@@ -1708,13 +1656,6 @@
               "name": "agents[0].contact",
               "type": "text",
               "label": "Контакты"
-            },
-            {
-              "name": "agents[0].attachments[]",
-              "type": "file",
-              "label": "2 скана документа поверенного",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "vehicle"
@@ -2458,9 +2399,12 @@
       "steps": [
         {
           "id": "principal",
-          "type": "form",
+          "type": "input-mode",
           "title": "Доверитель",
-          "fields": [
+          "input_mode_field": "principal_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "principal.full_name",
               "type": "text",
@@ -2500,13 +2444,6 @@
               "name": "principal.document.issued_date",
               "type": "date",
               "label": "Дата выдачи"
-            },
-            {
-              "name": "principal.attachments[]",
-              "type": "file",
-              "label": "Сканы документа доверителя",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "agent_choice"
@@ -2532,9 +2469,12 @@
         },
         {
           "id": "agent_1",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 1",
-          "fields": [
+          "input_mode_field": "agent_1_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent1.full_name",
               "type": "text",
@@ -2569,13 +2509,6 @@
               "name": "agent1.document.issued_date",
               "type": "date",
               "label": "Дата выдачи"
-            },
-            {
-              "name": "agent1.attachments[]",
-              "type": "file",
-              "label": "Сканы документа поверенного 1",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": {
@@ -2591,9 +2524,12 @@
         },
         {
           "id": "agent_2",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 2",
-          "fields": [
+          "input_mode_field": "agent_2_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent2.full_name",
               "type": "text",
@@ -2628,13 +2564,6 @@
               "name": "agent2.document.issued_date",
               "type": "date",
               "label": "Дата выдачи"
-            },
-            {
-              "name": "agent2.attachments[]",
-              "type": "file",
-              "label": "Сканы документа поверенного 2",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "term"
@@ -2897,9 +2826,12 @@
       "steps": [
         {
           "id": "principal",
-          "type": "form",
+          "type": "input-mode",
           "title": "Доверитель",
-          "fields": [
+          "input_mode_field": "principal_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "principal.full_name",
               "type": "text",
@@ -2939,13 +2871,6 @@
               "name": "principal.document.issued_date",
               "type": "date",
               "label": "Дата выдачи"
-            },
-            {
-              "name": "principal.attachments[]",
-              "type": "file",
-              "min": 2,
-              "max": 2,
-              "label": "2 обязательных скана доверителя"
             }
           ],
           "next": "agent_choice"
@@ -2971,9 +2896,12 @@
         },
         {
           "id": "agent1",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 1",
-          "fields": [
+          "input_mode_field": "agent1_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent1.full_name",
               "type": "text",
@@ -3008,13 +2936,6 @@
               "name": "agent1.document.issued_date",
               "type": "date",
               "label": "Дата выдачи"
-            },
-            {
-              "name": "agent1.attachments[]",
-              "type": "file",
-              "label": "2 обязательных скана поверенного 1",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "agent2_or_categories"
@@ -3028,9 +2949,12 @@
         },
         {
           "id": "agent2",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 2",
-          "fields": [
+          "input_mode_field": "agent2_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent2.full_name",
               "type": "text",
@@ -3065,13 +2989,6 @@
               "name": "agent2.document.issued_date",
               "type": "date",
               "label": "Дата выдачи"
-            },
-            {
-              "name": "agent2.attachments[]",
-              "type": "file",
-              "min": 2,
-              "max": 2,
-              "label": "2 обязательных скана поверенного 2"
             }
           ],
           "next": "benefit_categories"
@@ -3465,9 +3382,12 @@
       "steps": [
         {
           "id": "principal",
-          "type": "form",
+          "type": "input-mode",
           "title": "Доверитель",
-          "fields": [
+          "input_mode_field": "principal_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "principal.full_name",
               "type": "text",
@@ -3507,13 +3427,6 @@
               "name": "principal.contact",
               "type": "text",
               "label": "Контакт (тел./email)"
-            },
-            {
-              "name": "principal.attachments[]",
-              "type": "file",
-              "min": 2,
-              "max": 2,
-              "label": "Сканы документа доверителя (2 файла)"
             }
           ],
           "next": "agent_choice"
@@ -3539,9 +3452,12 @@
         },
         {
           "id": "agent1",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 1",
-          "fields": [
+          "input_mode_field": "agent1_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent1.full_name",
               "type": "text",
@@ -3581,13 +3497,6 @@
               "name": "agent1.contact",
               "type": "text",
               "label": "Контакт"
-            },
-            {
-              "name": "agent1.attachments[]",
-              "type": "file",
-              "label": "Сканы поверенного 1 (2 файла)",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "agent2_cond"
@@ -3601,9 +3510,12 @@
         },
         {
           "id": "agent2",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 2",
-          "fields": [
+          "input_mode_field": "agent2_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent2.full_name",
               "type": "text",
@@ -3643,13 +3555,6 @@
               "name": "agent2.contact",
               "type": "text",
               "label": "Контакт"
-            },
-            {
-              "name": "agent2.attachments[]",
-              "type": "file",
-              "label": "Сканы поверенного 2 (2 файла)",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "court_types"
@@ -4024,9 +3929,12 @@
       "steps": [
         {
           "id": "principal",
-          "type": "form",
+          "type": "input-mode",
           "title": "Доверитель",
-          "fields": [
+          "input_mode_field": "principal_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "principal.full_name",
               "type": "text",
@@ -4071,13 +3979,6 @@
               "name": "principal.contact",
               "type": "text",
               "label": "Контакт (тел./email)"
-            },
-            {
-              "name": "principal.attachments[]",
-              "type": "file",
-              "label": "Сканы удостоверения личности доверителя (2 файла)",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "agent_choice"
@@ -4104,9 +4005,12 @@
         },
         {
           "id": "agent1",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 1",
-          "fields": [
+          "input_mode_field": "agent1_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent1.full_name",
               "type": "text",
@@ -4146,13 +4050,6 @@
               "name": "agent1.contact",
               "type": "text",
               "label": "Контакт"
-            },
-            {
-              "name": "agent1.attachments[]",
-              "type": "file",
-              "label": "Сканы поверенного 1 (2 файла)",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "agent2_cond"
@@ -4166,9 +4063,12 @@
         },
         {
           "id": "agent2",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 2",
-          "fields": [
+          "input_mode_field": "agent2_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent2.full_name",
               "type": "text",
@@ -4208,13 +4108,6 @@
               "name": "agent2.contact",
               "type": "text",
               "label": "Контакт"
-            },
-            {
-              "name": "agent2.attachments[]",
-              "type": "file",
-              "label": "Сканы поверенного 2 (2 файла)",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "banks"
@@ -4532,9 +4425,12 @@
       "steps": [
         {
           "id": "principal",
-          "type": "form",
+          "type": "input-mode",
           "title": "Доверитель",
-          "fields": [
+          "input_mode_field": "principal_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "principal.full_name",
               "type": "text",
@@ -4579,13 +4475,6 @@
               "name": "principal.contact",
               "type": "text",
               "label": "Контакт (тел./email)"
-            },
-            {
-              "name": "principal.attachments[]",
-              "type": "file",
-              "label": "Сканы удостоверения доверителя (2 файла)",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "agent_choice"
@@ -4612,9 +4501,12 @@
         },
         {
           "id": "agent1",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 1",
-          "fields": [
+          "input_mode_field": "agent1_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent1.full_name",
               "type": "text",
@@ -4654,13 +4546,6 @@
               "name": "agent1.contact",
               "type": "text",
               "label": "Контакт"
-            },
-            {
-              "name": "agent1.attachments[]",
-              "type": "file",
-              "label": "Сканы поверенного 1 (2 файла)",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "agent2_cond"
@@ -4674,9 +4559,12 @@
         },
         {
           "id": "agent2",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 2",
-          "fields": [
+          "input_mode_field": "agent2_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent2.full_name",
               "type": "text",
@@ -4716,13 +4604,6 @@
               "name": "agent2.contact",
               "type": "text",
               "label": "Контакт"
-            },
-            {
-              "name": "agent2.attachments[]",
-              "type": "file",
-              "label": "Сканы поверенного 2 (2 файла)",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "scope"
@@ -7123,9 +7004,12 @@
       "steps": [
         {
           "id": "principal",
-          "type": "form",
+          "type": "input-mode",
           "title": "Доверитель",
-          "fields": [
+          "input_mode_field": "principal_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "principal.full_name",
               "type": "text",
@@ -7191,9 +7075,12 @@
         },
         {
           "id": "agent1",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 1",
-          "fields": [
+          "input_mode_field": "agent1_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent1.full_name",
               "type": "text",
@@ -7233,13 +7120,6 @@
               "name": "agent1.contact",
               "type": "text",
               "label": "Контакт"
-            },
-            {
-              "name": "agent1.attachments[]",
-              "type": "file",
-              "label": "Сканы поверенного 1 (2 файла)",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "agent2_cond"
@@ -7253,9 +7133,12 @@
         },
         {
           "id": "agent2",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 2",
-          "fields": [
+          "input_mode_field": "agent2_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent2.full_name",
               "type": "text",
@@ -7295,13 +7178,6 @@
               "name": "agent2.contact",
               "type": "text",
               "label": "Контакт"
-            },
-            {
-              "name": "agent2.attachments[]",
-              "type": "file",
-              "label": "Сканы поверенного 2 (2 файла)",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "association"
@@ -7755,9 +7631,12 @@
       "steps": [
         {
           "id": "principal",
-          "type": "form",
+          "type": "input-mode",
           "title": "Доверитель",
-          "fields": [
+          "input_mode_field": "principal_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "principal.full_name",
               "type": "text",
@@ -7823,9 +7702,12 @@
         },
         {
           "id": "agent1",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 1",
-          "fields": [
+          "input_mode_field": "agent1_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent1.full_name",
               "type": "text",
@@ -7865,13 +7747,6 @@
               "name": "agent1.contact",
               "type": "text",
               "label": "Контакт"
-            },
-            {
-              "name": "agent1.attachments[]",
-              "type": "file",
-              "label": "Сканы поверенного 1 (2 файла)",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "agent2_cond"
@@ -7885,9 +7760,12 @@
         },
         {
           "id": "agent2",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 2",
-          "fields": [
+          "input_mode_field": "agent2_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent2.full_name",
               "type": "text",
@@ -7927,13 +7805,6 @@
               "name": "agent2.contact",
               "type": "text",
               "label": "Контакт"
-            },
-            {
-              "name": "agent2.attachments[]",
-              "type": "file",
-              "label": "Сканы поверенного 2 (2 файла)",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "property"
@@ -8787,9 +8658,12 @@
         },
         {
           "id": "giver",
-          "type": "form",
+          "type": "input-mode",
           "title": "Доверитель",
-          "fields": [
+          "input_mode_field": "giver_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "giver.full_name",
               "type": "text",
@@ -10516,9 +10390,12 @@
       "steps": [
         {
           "id": "principal",
-          "type": "form",
+          "type": "input-mode",
           "title": "Доверитель",
-          "fields": [
+          "input_mode_field": "principal_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "principal.full_name",
               "type": "text",
@@ -10558,13 +10435,6 @@
               "name": "principal.document.issued_date",
               "type": "date",
               "label": "Дата выдачи"
-            },
-            {
-              "name": "principal.attachments[]",
-              "type": "file",
-              "label": "Сканы паспорта доверителя (2 файла)",
-              "min": 2,
-              "max": 2
             }
           ],
           "required": true,
@@ -10592,9 +10462,12 @@
         },
         {
           "id": "agent1",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 1",
-          "fields": [
+          "input_mode_field": "agent1_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent1.full_name",
               "type": "text",
@@ -10629,13 +10502,6 @@
               "name": "agent1.document.issued_date",
               "type": "date",
               "label": "Дата выдачи"
-            },
-            {
-              "name": "agent1.attachments[]",
-              "type": "file",
-              "label": "Сканы паспорта поверенного (2 файла)",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "check_second_agent"
@@ -10649,9 +10515,12 @@
         },
         {
           "id": "agent2",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 2",
-          "fields": [
+          "input_mode_field": "agent2_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent2.full_name",
               "type": "text",
@@ -10686,13 +10555,6 @@
               "name": "agent2.document.issued_date",
               "type": "date",
               "label": "Дата выдачи"
-            },
-            {
-              "name": "agent2.attachments[]",
-              "type": "file",
-              "label": "Сканы паспорта поверенного (2 файла)",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "scope"
@@ -14715,9 +14577,12 @@
       "steps": [
         {
           "id": "principal",
-          "type": "form",
+          "type": "input-mode",
           "title": "Доверитель",
-          "fields": [
+          "input_mode_field": "principal_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "principal.full_name",
               "type": "text",
@@ -14757,13 +14622,6 @@
               "name": "principal.passport.issued_date",
               "type": "date",
               "label": "Дата выдачи"
-            },
-            {
-              "name": "principal.attachments[]",
-              "type": "file",
-              "label": "Сканы доверителя (2 файла)",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "agent_choice"
@@ -14790,9 +14648,12 @@
         },
         {
           "id": "agent1",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 1",
-          "fields": [
+          "input_mode_field": "agent1_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent1.full_name",
               "type": "text",
@@ -14827,13 +14688,6 @@
               "name": "agent1.passport.issued_date",
               "type": "date",
               "label": "Дата выдачи"
-            },
-            {
-              "name": "agent1.attachments[]",
-              "type": "file",
-              "label": "Сканы поверенного 1 (2 файла)",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "agent2_cond"
@@ -14847,9 +14701,12 @@
         },
         {
           "id": "agent2",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 2",
-          "fields": [
+          "input_mode_field": "agent2_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent2.full_name",
               "type": "text",
@@ -14884,13 +14741,6 @@
               "name": "agent2.passport.issued_date",
               "type": "date",
               "label": "Дата выдачи"
-            },
-            {
-              "name": "agent2.attachments[]",
-              "type": "file",
-              "label": "Сканы поверенного 2 (2 файла)",
-              "min": 2,
-              "max": 2
             }
           ],
           "next": "task_selection"
@@ -16910,9 +16760,12 @@
       "steps": [
         {
           "id": "principal",
-          "type": "form",
+          "type": "input-mode",
           "title": "Доверитель",
-          "fields": [
+          "input_mode_field": "principal_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "principal.full_name",
               "type": "text",
@@ -16963,9 +16816,12 @@
         },
         {
           "id": "agent_1",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 1",
-          "fields": [
+          "input_mode_field": "agent_1_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent1.full_name",
               "type": "text",
@@ -17003,9 +16859,12 @@
         },
         {
           "id": "agent_2",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 2",
-          "fields": [
+          "input_mode_field": "agent_2_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent2.full_name",
               "type": "text",
@@ -17329,9 +17188,12 @@
       "steps": [
         {
           "id": "principal",
-          "type": "form",
+          "type": "input-mode",
           "title": "Доверитель",
-          "fields": [
+          "input_mode_field": "principal_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "principal.full_name",
               "type": "text",
@@ -17402,9 +17264,12 @@
         },
         {
           "id": "agent1",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 1",
-          "fields": [
+          "input_mode_field": "agent1_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent1.full_name",
               "type": "text",
@@ -17437,9 +17302,12 @@
         },
         {
           "id": "agent2",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 2",
-          "fields": [
+          "input_mode_field": "agent2_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent2.full_name",
               "type": "text",
@@ -17801,9 +17669,12 @@
       "steps": [
         {
           "id": "principal",
-          "type": "form",
+          "type": "input-mode",
           "title": "Доверитель",
-          "fields": [
+          "input_mode_field": "principal_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "principal.full_name",
               "type": "text",
@@ -17874,9 +17745,12 @@
         },
         {
           "id": "agent1",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 1",
-          "fields": [
+          "input_mode_field": "agent1_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent1.full_name",
               "type": "text",
@@ -17909,9 +17783,12 @@
         },
         {
           "id": "agent2",
-          "type": "form",
+          "type": "input-mode",
           "title": "Поверенный 2",
-          "fields": [
+          "input_mode_field": "agent2_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "agent2.full_name",
               "type": "text",
@@ -19991,9 +19868,12 @@
       "steps": [
         {
           "id": "applicant",
-          "type": "form",
+          "type": "input-mode",
           "title": "Заявитель",
-          "fields": [
+          "input_mode_field": "applicant_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "applicant.full_name",
               "type": "text",
@@ -21144,9 +21024,12 @@
       "steps": [
         {
           "id": "applicant",
-          "type": "form",
+          "type": "input-mode",
           "title": "Заявитель",
-          "fields": [
+          "input_mode_field": "applicant_mode",
+          "min": 1,
+          "max": 1,
+          "manual_fields": [
             {
               "name": "applicant.full_name",
               "type": "text",
@@ -21186,12 +21069,6 @@
               "name": "applicant.email",
               "type": "text",
               "label": "E-mail"
-            },
-            {
-              "name": "applicant.passport_scan[]",
-              "type": "file",
-              "label": "Паспорт заявителя (скан)",
-              "min": 1
             }
           ],
           "next": "representation"

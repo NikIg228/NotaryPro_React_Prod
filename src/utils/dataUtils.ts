@@ -65,6 +65,52 @@ export const getDocumentsByCategory = (categoryPath: string): Document[] => {
   }) as Document[]
 }
 
+// Определить основную категорию документа
+export const getDocumentMainCategory = (doc: Document): string => {
+  const title = doc.title.toLowerCase()
+  const category = doc.category.toLowerCase()
+  
+  // Наследственное дело - проверяем первым, так как могут быть заявления о наследстве
+  if (title.includes('наследств') || title.includes('наследник') || category.includes('наследств')) {
+    return 'Наследственное дело'
+  }
+  
+  // Договор
+  if (title.includes('договор') || title.includes('брачное соглашение')) {
+    return 'Договор'
+  }
+  
+  // Доверенность
+  if (title.includes('доверенность') || category.includes('доверенности')) {
+    return 'Доверенность'
+  }
+  
+  // Согласие
+  if (title.includes('согласие')) {
+    return 'Согласие'
+  }
+  
+  // Заявление
+  if (title.includes('заявление')) {
+    return 'Заявление'
+  }
+  
+  // По умолчанию - Доверенность (так как большинство документов - доверенности)
+  return 'Доверенность'
+}
+
+// Получить документы по основной категории
+export const getDocumentsByMainCategory = (mainCategory: string): Document[] => {
+  return documentsData.filter(doc => 
+    getDocumentMainCategory(doc) === mainCategory
+  ) as Document[]
+}
+
+// Получить все основные категории
+export const getMainCategories = (): string[] => {
+  return ['Договор', 'Доверенность', 'Заявление', 'Наследственное дело', 'Согласие']
+}
+
 // Поиск документов
 export const searchDocuments = (query: string): Document[] => {
   const lowerQuery = query.toLowerCase()

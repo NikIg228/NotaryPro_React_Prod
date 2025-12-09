@@ -24,3 +24,12 @@
 
 /*.html
   Content-Type: text/html; charset=utf-8
+
+/*.mov
+  Content-Type: video/quicktime
+
+/*.mp4
+  Content-Type: video/mp4
+
+/*.webm
+  Content-Type: video/webm
