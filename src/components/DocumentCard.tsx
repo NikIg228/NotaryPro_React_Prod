@@ -4,16 +4,12 @@ import { useNavigate } from 'react-router-dom'
 
 interface DocumentCardProps {
   id: number
-  code: string
   title: string
-  category: string
 }
 
 const DocumentCard: React.FC<DocumentCardProps> = ({ 
   id, 
-  code, 
-  title, 
-  category 
+  title
 }) => {
   const navigate = useNavigate()
 

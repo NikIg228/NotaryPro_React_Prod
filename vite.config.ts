@@ -21,7 +21,25 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: undefined,
+        manualChunks: (id) => {
+          // Split vendor libraries into separate chunks
+          if (id.includes('node_modules')) {
+            // React and React DOM
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'vendor-react'
+            }
+            // React Router
+            if (id.includes('react-router')) {
+              return 'vendor-router'
+            }
+            // Form libraries
+            if (id.includes('react-hook-form') || id.includes('@hookform') || id.includes('zod')) {
+              return 'vendor-forms'
+            }
+            // All other node_modules
+            return 'vendor'
+          }
+        },
         // Правильные расширения для модулей
         entryFileNames: 'assets/[name].[hash].js',
         chunkFileNames: 'assets/[name].[hash].js',
@@ -33,6 +51,8 @@ export default defineConfig({
     modulePreload: {
       polyfill: true,
     },
+    // Increase chunk size warning limit to 600kb (optional, but helps reduce noise)
+    chunkSizeWarningLimit: 600,
   },
 })
 
