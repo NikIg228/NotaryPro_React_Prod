@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Card from '../components/Card'
-import { getMainCategories, getDocumentsByMainCategory } from '../utils/dataUtils'
+import { getMainCategories } from '../utils/dataUtils'
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate()
@@ -10,14 +10,6 @@ const HomePage: React.FC = () => {
   const categories = useMemo(() => {
     return getMainCategories().sort()
   }, [])
-
-  // Получаем количество документов в каждой категории
-  const categoriesWithCount = useMemo(() => {
-    return categories.map(category => ({
-      name: category,
-      count: getDocumentsByMainCategory(category).length
-    }))
-  }, [categories])
 
   const handleCategoryClick = (category: string) => {
     navigate('/category', { 
